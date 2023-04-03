@@ -1,0 +1,80 @@
+<style>
+    table{border-collapse: collapse;}
+    table tr th{ border: 1px solid #333; padding: 5px 10px;}
+    table tr td{ border: 1px solid #333; padding: 5px 10px;}
+    .paging{ padding: 0;margin: 20px 0 0;}
+    .paging li{ display: inline-block;}
+    .paging a{background: #673AB7;  padding: 4px 10px;  display: inline-block;  border-radius: 2px; color: #fff; text-decoration: none;}
+    .paging a:hover{background: #482981;}
+</style>
+<h1>TOTAL RECORD: <%=totalRecord%></h1>
+<table class="table table-border list">
+    <thead class="thead-dark">
+        <tr>
+          <th>ID</th><th>EMAIL</th><th>CREATED DATE</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%
+        if ((totalRecord == 0) || (totalRecord == null) || (typeof totalRecord == "undefined") ){
+              %>
+            <tr>
+              <td colspan="6">Data empty!</td>
+            </tr>
+              <%
+        }else{
+        %>
+
+            <% data.forEach( function(data) { %>
+            <tr>
+                
+            <td>
+                <%= data.id %>
+            </td>
+            <td>
+                <%= data.email %>
+            </td>
+            <td>
+                <%= data.created_datetime.toLocaleString() %>
+            </td>
+            
+            <% }); %>
+
+        <%
+          }
+        %>
+    </tbody>
+</table>
+
+<% if (pageCount > 1) { %>  
+<ul class="paging">  
+<% if (currentPage > 1) { %>
+    <li><a href="/?page=1">&laquo;</a></li>
+<% } %>
+
+<% var i = 1;
+if (currentPage > 5) {
+i = +currentPage - 4;
+} %>
+
+<% if (i !== 1) { %>
+    <li class="disabled"><a href="#">...</a></li>
+<% } %>
+
+<% for (i; i<=pageCount; i++) { %>
+  <% if (currentPage == i) { %>
+      <li class="active"><span><%= i %> </span></li>
+  <% } else { %>
+      <li><a href="/?page=<%= i %>"><%= i %></a></li>
+  <% } %>
+  <% if (i == (+currentPage + 4)) { %>
+      <li class="disabled"><a href="#">...</a></li>
+  <% break; } %>
+<% } %>
+
+
+<% if (currentPage != pageCount) { %>
+    <li><a href="/?page=<%= pageCount %>">&raquo;</a></li>
+<% } %>
+</ul>  
+<% } %>
