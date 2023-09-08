@@ -8,15 +8,11 @@ if (!isset($id)){
     $id = 1;
 }
 
-$postJson = `{
-    "Name_aka_16054762" : $s
-}`;
+$postJson = '{
+    "Name_aka_16054762" : "'.$s.'"
+}';
 $enpointurl = $app->baseurl."/api/searchreq/".$app->idbase;
 $result = json_decode($app->curlPostWithBody($enpointurl, $postJson));
-
-print_r($result);
-exit();
-
 $totaldata = $result->total;
 ?>
 
@@ -32,6 +28,9 @@ $totaldata = $result->total;
                 <input class="form-control float-left" type="text" name="s" placeholder="Search Data" required> <input class="btn btn-primary" type="submit" name="submit" value="SEARCH">
             </form>
         </div>
+        <br>
+        <a href="list.php?page=1&size=10">Go Back</a>
+        <br><br>
         <h3>TOTAL DATA: <?=$result->total?></h3>
             <table class="table table-striped table-hover">
                 <tr>
