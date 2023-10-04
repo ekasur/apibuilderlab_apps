@@ -43,7 +43,7 @@
                             <%= data.created_datetime.toLocaleString() %>
                         </td>
                         <td>
-                            <a href="/details?id=<%=data.id%>">View Details</a>
+                            <a href="/details/?id=<%= data.id %>">View Details</a>
                         </td>
                         
                         <% }); %>
@@ -53,22 +53,6 @@
                     %>
                 </tbody>
             </table>
-
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <%
-                    if (totalRecord > pageSize){
-                        for(var i=1;i<=totalpages;i++){
-                            %>
-                            <li class="page-item">
-                                <a class="page-link" href="/?page=<%=i%>"> <%=i%> </a>
-                            </li>
-                            <%
-                        }
-                    }
-                    %>
-                </ul>
-            </nav>
         </div>
     </div>
 </div>
