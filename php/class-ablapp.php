@@ -10,8 +10,8 @@ class AblApp{
         $this->token = "REPLACE_WITH_API_KEY";*/
 
         $this->baseurl = "https://app.apibuilderlab.com";
-        $this->idbase = "14";
-        $this->token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imd1c2VrYS5kZXZAZ21haWwuY29tIiwiaWF0IjoxNjk0MDczNjc2fQ.vCRp2X_MmtxOlidpf-SxvCvq39_PQZEM3eTYVsdzLMg";
+        $this->idbase = "1";
+        $this->token = "abl-yxwfoo1lna0g8ch";
     }
 
     function curlPost($urlpaging){

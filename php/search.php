@@ -9,7 +9,7 @@ if (!isset($id)){
 }
 
 $postJson = '{
-    "Name_aka_16054762" : "'.$s.'"
+    "country_name_aka_111752597" : "'.$s.'"
 }';
 $enpointurl = $app->baseurl."/api/searchreq/".$app->idbase;
 $result = json_decode($app->curlPostWithBody($enpointurl, $postJson));
@@ -42,9 +42,9 @@ $totaldata = $result->total;
                 ?>
                 <tr>
                     <td><?=$result->data[$i]->id?></td>
-                    <td><?=$result->data[$i]->Name?></td>
-                    <td><?=$result->data[$i]->Email?></td>
-                    <td><?=date("d M Y", strtotime($result->data[$i]->DateJoin))?></td>
+                    <td><?=$result->data[$i]->country_name?></td>
+                    <td><?=$result->data[$i]->phone_code?></td>
+                    <td><?=date("d M Y", strtotime($result->data[$i]->created_datetime))?></td>
                     <td><a href="details.php?id=<?=$result->data[$i]->id?>">View Details</a></td>
                 </tr>
                 <?php

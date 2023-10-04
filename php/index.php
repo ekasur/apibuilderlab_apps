@@ -8,7 +8,7 @@ if (!isset($page)){
     $page = 1;
 }
 if (!isset($size)){
-    $size = 10;
+    $size = 20;
 }
 
 $enpointurl = $app->baseurl."/api/getreq/".$app->idbase."/paging?page=".$page."&size=".$size;
@@ -33,17 +33,16 @@ $totalpages = ceil($totaldata / $size);
         <h3>TOTAL DATA: <?=$result->total?></h3>
             <table class="table table-striped table-hover">
                 <tr>
-                    <th>ID</th><th>Name</th><th>Email</th><th>DateJoin</th><th>#</th>
+                    <th>COUNTRY</th><th>COUNTRY CODE</th><th>DATE CREATED</th><th>#</th>
                 </tr>
             <?php
             $n=1;
             for ($i=0;$i<count($result->data);$i++){
                 ?>
                 <tr>
-                    <td><?=$result->data[$i]->id?></td>
-                    <td><?=$result->data[$i]->Name?></td>
-                    <td><?=$result->data[$i]->Email?></td>
-                    <td><?=date("d M Y", strtotime($result->data[$i]->DateJoin))?></td>
+                    <td><?=$result->data[$i]->country_name?></td>
+                    <td><?=$result->data[$i]->phone_code?></td>
+                    <td><?=date("d M Y", strtotime($result->data[$i]->created_datetime))?></td>
                     <td><a href="details.php?id=<?=$result->data[$i]->id?>">View Details</a></td>
                 </tr>
                 <?php
@@ -59,7 +58,7 @@ $totalpages = ceil($totaldata / $size);
                     for($i=1;$i<=$totalpages;$i++){
                         ?>
                         <li class="page-item">
-                            <a class="page-link" href="list.php?page=<?=$i?>"> <?=$i?> </a>
+                            <a class="page-link" href="index.php?page=<?=$i?>"> <?=$i?> </a>
                         </li>
                         <?php
                     }

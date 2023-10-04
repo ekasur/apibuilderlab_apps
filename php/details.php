@@ -18,12 +18,12 @@ $result = json_decode($app->curlPost($enpointurl));
         <?php echo "APIURL link preview: ".$enpointurl; echo "<br>"; ?>
         <h3>Data details: </h3><br>
         <ul class="list-group">
-            <li class="list-group-item">Name : <?=$result->data[0]->Name?> </li>
-            <li class="list-group-item">Name : <?=$result->data[0]->Email?> </li>
-            <li class="list-group-item">DateJoin : <?=date("d M Y", strtotime($result->data[0]->DateJoin))?></li>
+            <li class="list-group-item">Country : <?=$result->data[0]->country_name?> </li>
+            <li class="list-group-item">Country Code : <?=$result->data[0]->country_code?> </li>
+            <li class="list-group-item">Created date : <?=date("d M Y", strtotime($result->data[0]->created_datetime))?></li>
         </ul>
         <br>
-        <a href="list.php?page=1&size=10">Go Back</a>
+        <a href="index.php?page=1">Go Back</a>
         </div>
     </div>
 </div>
