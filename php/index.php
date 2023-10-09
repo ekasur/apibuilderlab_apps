@@ -33,13 +33,18 @@ $totalpages = ceil($totaldata / $size);
         <h3>TOTAL DATA: <?=$result->total?></h3>
             <table class="table table-striped table-hover">
                 <tr>
-                    <th>COUNTRY</th><th>COUNTRY CODE</th><th>DATE CREATED</th><th>#</th>
+                    <th>NO.</th><th>COUNTRY</th><th>COUNTRY CODE</th><th>DATE CREATED</th><th>#</th>
                 </tr>
             <?php
-            $n=1;
+            if ($page==1){
+                $n=1;
+            }else{
+                $n=($size*$page) - $size + 1; 
+            }
             for ($i=0;$i<count($result->data);$i++){
                 ?>
                 <tr>
+                    <td><?=$n?></td>
                     <td><?=$result->data[$i]->country_name?></td>
                     <td><?=$result->data[$i]->phone_code?></td>
                     <td><?=date("d M Y", strtotime($result->data[$i]->created_datetime))?></td>
